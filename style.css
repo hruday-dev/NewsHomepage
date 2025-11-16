@@ -22,8 +22,9 @@
 body{
     padding: 1rem;
 }
-ul{
-    display: none;
+.stop-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 nav{
     display: flex;
@@ -31,12 +32,37 @@ nav{
     justify-content: space-between;
     margin-bottom: 1rem;
 }
-nav button{
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+#mobile-nav{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    background-color: white;
+    min-height: 100vh;
+    width: 70%;
+    padding: 1.5rem;
+    font-weight: 500;
+    box-shadow: -10px 1px 500px hsl(0, 0%, 46%);
+}
+#nav-menu,#nav-menu-close{
     background-image: url('./assets/images/icon-menu.svg');
     background-color: transparent;
     background-repeat: no-repeat;
     padding: 0.6rem 1rem;
     border: none;
+}
+#nav-menu-close{
+    background-image: url('./assets/images/icon-menu-close.svg');
+    background-position: right;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    width: 100%;
 }
 main{
     display: flex;
@@ -104,4 +130,84 @@ strong{
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--Verydarkblue);
+}
+
+li:hover{
+    color: var(--Softorange);
+}
+#main-container button:hover{
+    background-color: var(--Verydarkblue);
+    color: var(--Off-white);
+}
+@media screen and (min-width:800px){
+    #nav-menu{
+        display: none;
+    }
+    #nav-menu-close{
+        display: none;
+    }
+    #mobile-nav{
+        display: block;
+        position: static;
+        box-shadow: none;
+        min-height: 0;
+    }
+    ul{
+        flex-direction: row;
+        justify-content: right;
+        color: var(--Darkgrayishblue);
+    }
+    main > div{
+        display: flex;
+        gap: 2rem;
+    }
+    #main-container{
+        display: grid;
+        grid-template-columns: repeat(2,50%);
+    }
+    #main-container div:last-of-type{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 1.2rem;
+    }
+    #main-container > img{
+        content: url('./assets/images/image-web-3-desktop.jpg');
+        grid-column-end: span 2;
+    }
+    h1{
+        font-size: 3.5rem;
+    }
+    #bottom{
+        display: flex;
+        align-content: center;
+        gap: 1rem;
+    }
+}
+@media  screen and (min-width:1250px) {
+     html{
+        font-size: 18px;
+    }
+    body{
+        padding: 2rem 5rem;
+    }
+    #main-container p{
+        line-height:2rem;
+        margin-top: 1rem;
+        margin-right: 1.5rem;
+    }
+    #main-container div:last-of-type{
+        gap: 1rem;
+    }
+    #main-container{
+        grid-template-columns: repeat(2,50%);
+        row-gap: 1rem;
+    }
+    aside{
+        font-size: 1.15rem;
+        width: 85%;
+    }
+    button{
+        font-size: 1rem;
+    }
 }
